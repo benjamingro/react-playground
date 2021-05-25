@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/benjamingro/react-playground/static/css/main.4f110961.chunk.css",
-    "main.js": "/benjamingro/react-playground/static/js/main.96a13887.chunk.js",
-    "main.js.map": "/benjamingro/react-playground/static/js/main.96a13887.chunk.js.map",
-    "runtime-main.js": "/benjamingro/react-playground/static/js/runtime-main.6c5584f6.js",
-    "runtime-main.js.map": "/benjamingro/react-playground/static/js/runtime-main.6c5584f6.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/benjamingro/react-playground/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.b7918d30.chunk.js": "/benjamingro/react-playground/static/js/2.b7918d30.chunk.js",
-    "static/js/2.b7918d30.chunk.js.map": "/benjamingro/react-playground/static/js/2.b7918d30.chunk.js.map",
-    "static/js/3.df168540.chunk.js": "/benjamingro/react-playground/static/js/3.df168540.chunk.js",
-    "static/js/3.df168540.chunk.js.map": "/benjamingro/react-playground/static/js/3.df168540.chunk.js.map",
-    "index.html": "/benjamingro/react-playground/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/benjamingro/react-playground/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.4f110961.chunk.css.map": "/benjamingro/react-playground/static/css/main.4f110961.chunk.css.map",
-    "static/js/2.b7918d30.chunk.js.LICENSE.txt": "/benjamingro/react-playground/static/js/2.b7918d30.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/benjamingro/react-playground/static/media/logo.6ce24c58.svg"
+    "main.css": "/blank-react-page/static/css/main.4f110961.chunk.css",
+    "main.js": "/blank-react-page/static/js/main.2f116fa5.chunk.js",
+    "main.js.map": "/blank-react-page/static/js/main.2f116fa5.chunk.js.map",
+    "runtime-main.js": "/blank-react-page/static/js/runtime-main.91ff0ed9.js",
+    "runtime-main.js.map": "/blank-react-page/static/js/runtime-main.91ff0ed9.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/blank-react-page/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.f06642d6.chunk.js": "/blank-react-page/static/js/2.f06642d6.chunk.js",
+    "static/js/2.f06642d6.chunk.js.map": "/blank-react-page/static/js/2.f06642d6.chunk.js.map",
+    "static/js/3.a8c191de.chunk.js": "/blank-react-page/static/js/3.a8c191de.chunk.js",
+    "static/js/3.a8c191de.chunk.js.map": "/blank-react-page/static/js/3.a8c191de.chunk.js.map",
+    "index.html": "/blank-react-page/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/blank-react-page/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.4f110961.chunk.css.map": "/blank-react-page/static/css/main.4f110961.chunk.css.map",
+    "static/js/2.f06642d6.chunk.js.LICENSE.txt": "/blank-react-page/static/js/2.f06642d6.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/blank-react-page/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6c5584f6.js",
+    "static/js/runtime-main.91ff0ed9.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.b7918d30.chunk.js",
+    "static/js/2.f06642d6.chunk.js",
     "static/css/main.4f110961.chunk.css",
-    "static/js/main.96a13887.chunk.js"
+    "static/js/main.2f116fa5.chunk.js"
   ]
 }
