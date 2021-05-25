@@ -4,10 +4,21 @@ import MyNavbar from './components/MyNavbar.js';
 
 import Home from './pages/Home.js';
 
+import {
+  // BrowserRouter as Router,
+  HashRouter as Router,
+
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
   return (
     <>
-      <MyNavbar />
+      <Router>
+        <MyNavbar />
+      </Router>
     </>
   );
 }
