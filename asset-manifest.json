@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/benjamingro/react-playground/static/css/main.4f110961.chunk.css",
-    "main.js": "/benjamingro/react-playground/static/js/main.f593fca9.chunk.js",
-    "main.js.map": "/benjamingro/react-playground/static/js/main.f593fca9.chunk.js.map",
+    "main.js": "/benjamingro/react-playground/static/js/main.dfc8a1cb.chunk.js",
+    "main.js.map": "/benjamingro/react-playground/static/js/main.dfc8a1cb.chunk.js.map",
     "runtime-main.js": "/benjamingro/react-playground/static/js/runtime-main.772ea141.js",
     "runtime-main.js.map": "/benjamingro/react-playground/static/js/runtime-main.772ea141.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/benjamingro/react-playground/static/css/2.4c97ca4f.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.98803ac7.chunk.js",
     "static/css/main.4f110961.chunk.css",
-    "static/js/main.f593fca9.chunk.js"
+    "static/js/main.dfc8a1cb.chunk.js"
   ]
 }
