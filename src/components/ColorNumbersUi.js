@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle, faMinusCircle, faSyncAlt } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 

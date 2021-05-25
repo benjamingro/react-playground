@@ -21,6 +21,17 @@ function App() {
     <>
       <Router>
         <MyNavbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/myfirstcomponents">
+            <MyFirstComponents />
+          </Route>
+          <Route exact path="/simpleform">
+            <SimpleForm />
+          </Route>
+        </Switch>
       </Router>
     </>
   );
