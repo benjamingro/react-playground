@@ -21,54 +21,6 @@ class MyNavbar extends React.Component {
     }
 
     clickHandler(event) {
-        // event.preventDefault(); 
-        let new_state = this.state; 
-
-        new_state[event.target.id] = 'active';
-
-        this.setState(new_state); 
-
-        // let key_array = Object.keys(this.state); 
-        // let i = 0; 
-        // for(i=0; i<key_array.length; i++)
-        // {
-        //     let my_key = key_array[i] ; 
-        //     let my_object = {my_key:''}; 
-        //     if(my_key===event.target.id)
-        //     {
-        //         // this.setState({[my_key]:'active']}); 
-        //         my_object[my_key]='active'; 
-        //         this.setState(my_object); 
-        //         // alert(my_key);
-        //     }
-        //     else
-        //     {
-        //         this.setState(my_object); 
-        //         // this.setState({[my_key]:'']});
-        //         // alert(my_key);
-        //     }
-        // }
-
-        // alert(event.target.id);
-        // event.target.id.className="active";
-        // this.setState({
-        //     class: {
-        //         myfirstcomponents: "",
-        //         simpleform: ""
-        //     }
-        // });
-        // console.log({class:{[event.target.id]:'active'}}); 
-        // console.log(`inside clickHandler event.target.id = ${event.target.id}`);
-
-        // this.setState({class:{[event.target.id]:'active'}});
-        // let newState = {
-        //     class: {
-        //         myfirstcomponents: "active",
-        //         simpleform: "active"
-        //     }
-        // };
-        // this.setState(newState);
-        // alert(`inside clickHandler event.target.id = ${event.target.id}, this.state.class.myfirstcomponents=${this.state.class.myfirstcomponents},this.state.class.myfirstcomponents=${this.state.class.simpleform}, newState = ${JSON.stringify(newState)} `);
 
     }
 
