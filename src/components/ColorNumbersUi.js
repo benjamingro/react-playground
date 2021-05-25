@@ -19,7 +19,7 @@ class ColorNumbersUi extends React.Component {
     }
 
     initializeNumObjectArray() {
-        let numObjectArray = []
+        let numObjectArray = [];
         for (let i = 0; i <= 5; i++) {
             numObjectArray.push({ number: i, color: this.getColor(), key: i });
         }
