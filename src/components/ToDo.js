@@ -1,4 +1,7 @@
-function Todo({todo,index,remove}){
+import React from 'react';
+
+
+function ToDo({todo,index,remove}){
     function handle(){
       console.log('Ping:',index);
       remove(index);
@@ -6,3 +9,4 @@ function Todo({todo,index,remove}){
     return <div className="todo" onClick={handle}>{todo.text} (-)</div>
   }
   
+export default ToDo

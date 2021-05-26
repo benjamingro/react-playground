@@ -1,3 +1,6 @@
+import React from 'react';
+import ToDo from './ToDo.js';
+import ToDoForm from './ToDoForm.js';
 
 
 function ToDoComponent(){
@@ -31,12 +34,13 @@ function ToDoComponent(){
         <div className="app">
           <div className="todo-list" >
             {todos.map((todo, i) => (
-              <Todo key={i} index={i} todo={todo} remove={removeTodo}/>
+              <ToDo key={i} index={i} todo={todo} remove={removeTodo}/>
             ))}
-            <TodoForm addTodo={addTodo} />
+            <ToDoForm addTodo={addTodo} />
           </div>
         </div>
       );
 
 }
 
+export default ToDoComponent
