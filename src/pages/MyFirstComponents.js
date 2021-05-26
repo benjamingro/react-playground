@@ -7,6 +7,9 @@ import ColorNumbers from '../components/ColorNumbers.js';
 import ColorNumbersUi from '../components/ColorNumbersUi.js';
 import TextMirror from '../components/TextMirror.js';
 
+import ToDoComponent from '../components/ToDoComponent';
+
+
 class MyFirstComponents extends React.Component {
     constructor(props) {
         super(props);
