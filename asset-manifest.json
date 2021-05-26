@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/react-playground/static/css/main.4f110961.chunk.css",
-    "main.js": "/react-playground/static/js/main.c3ba70bf.chunk.js",
-    "main.js.map": "/react-playground/static/js/main.c3ba70bf.chunk.js.map",
-    "runtime-main.js": "/react-playground/static/js/runtime-main.44428f8f.js",
-    "runtime-main.js.map": "/react-playground/static/js/runtime-main.44428f8f.js.map",
+    "main.css": "/react-playground/static/css/main.5b63959a.chunk.css",
+    "main.js": "/react-playground/static/js/main.32bc19af.chunk.js",
+    "main.js.map": "/react-playground/static/js/main.32bc19af.chunk.js.map",
+    "runtime-main.js": "/react-playground/static/js/runtime-main.78c4de89.js",
+    "runtime-main.js.map": "/react-playground/static/js/runtime-main.78c4de89.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/react-playground/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.1f3d8f00.chunk.js": "/react-playground/static/js/2.1f3d8f00.chunk.js",
-    "static/js/2.1f3d8f00.chunk.js.map": "/react-playground/static/js/2.1f3d8f00.chunk.js.map",
-    "static/js/3.139daf4e.chunk.js": "/react-playground/static/js/3.139daf4e.chunk.js",
-    "static/js/3.139daf4e.chunk.js.map": "/react-playground/static/js/3.139daf4e.chunk.js.map",
+    "static/js/2.4215048d.chunk.js": "/react-playground/static/js/2.4215048d.chunk.js",
+    "static/js/2.4215048d.chunk.js.map": "/react-playground/static/js/2.4215048d.chunk.js.map",
+    "static/js/3.c9cef21f.chunk.js": "/react-playground/static/js/3.c9cef21f.chunk.js",
+    "static/js/3.c9cef21f.chunk.js.map": "/react-playground/static/js/3.c9cef21f.chunk.js.map",
     "index.html": "/react-playground/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/react-playground/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.4f110961.chunk.css.map": "/react-playground/static/css/main.4f110961.chunk.css.map",
-    "static/js/2.1f3d8f00.chunk.js.LICENSE.txt": "/react-playground/static/js/2.1f3d8f00.chunk.js.LICENSE.txt",
+    "static/css/main.5b63959a.chunk.css.map": "/react-playground/static/css/main.5b63959a.chunk.css.map",
+    "static/js/2.4215048d.chunk.js.LICENSE.txt": "/react-playground/static/js/2.4215048d.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/react-playground/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.44428f8f.js",
+    "static/js/runtime-main.78c4de89.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.1f3d8f00.chunk.js",
-    "static/css/main.4f110961.chunk.css",
-    "static/js/main.c3ba70bf.chunk.js"
+    "static/js/2.4215048d.chunk.js",
+    "static/css/main.5b63959a.chunk.css",
+    "static/js/main.32bc19af.chunk.js"
   ]
 }
