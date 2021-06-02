@@ -9,6 +9,7 @@ import ColorNumbersUi from './ColorNumbersUi.js';
 import TextMirror from './TextMirror.js';
 
 import ToDoComponent from './ToDoComponent.js';
+import AtmMachine from './AtmMachine.js';
 
 
 
@@ -45,6 +46,9 @@ class PlaygroundComponent extends React.Component {
             case 'ToDoComponent':
                 this.Component = <ToDoComponent />;
                 break;
+            case 'AtmMachine':
+                this.Component = <AtmMachine />;
+                break; 
             default:
                 this.Component = <HelloWorld />;
                 break;
@@ -81,11 +85,9 @@ class PlaygroundComponent extends React.Component {
 
                     </div>
                     <div className="card-body">
-                        {/* {MyComponent} */}
                         {this.Component}
                         <p className="card-text text-secondary mt-4">
                             {this.ComponentText}
-                            {/* This takes the ColorNumbers component a step farther by adding user input. */}
                         </p>
                     </div>
                 </div>

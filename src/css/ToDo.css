@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+.strikeThrough{
+    text-decoration: line-through;
+}
+
+.handWriting{
+    font-family:'Indie Flower', cursive;
+    font-weight:bold;
+    font-size:1.4rem;
+}
+
+.controlIcon{
+    font-size:1.4rem; 
+}

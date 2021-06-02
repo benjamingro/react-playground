@@ -1,16 +1,6 @@
 import React from 'react';
-import Clock from '../components/Clock.js';
-import HelloWorld from '../components/HelloWorld.js';
-import Counter from '../components/Counter.js';
-import CounterUi from '../components/CounterUi.js';
-import ColorNumbers from '../components/ColorNumbers.js';
-import ColorNumbersUi from '../components/ColorNumbersUi.js';
-import TextMirror from '../components/TextMirror.js';
 
 import PlaygroundComponent from '../components/PlaygroundComponent.js';
-
-
-import ToDoComponent from '../components/ToDoComponent';
 
 
 class MyFirstComponents extends React.Component {
@@ -42,10 +32,16 @@ class MyFirstComponents extends React.Component {
                     </div>
                     <div className="col-lg-10">
                         <div className="row w-100">
+
+                        <PlaygroundComponent
+                                componentname="AtmMachine"
+                                componenttitle="AtmMachine Component"
+                                componenttext="This component was created from the MIT xPRO Week 15 ATM Machine lesson.  "
+                            />
                         <PlaygroundComponent
                                 componentname="ToDoComponent"
-                                componenttitle="ToDoComponent Component"
-                                componenttext="This component was modified from the MIT xPRO Week 14 ToDo List lesson.  "
+                                componenttitle="ToDo Component"
+                                componenttext="This component was created from the MIT xPRO Week 14 ToDo List lesson.  "
                             />
 
                             <PlaygroundComponent
@@ -82,7 +78,12 @@ class MyFirstComponents extends React.Component {
                             <PlaygroundComponent
                                 componentname="Clock"
                                 componenttitle="Clock Component"
-                                componenttext='This is my first React component with dynamic content. Actually, it was copied from the <a href="https://reactjs.org/docs/state-and-lifecycle.html" target="_blank">ReactJS website</a>. It is uses object-oriented ReactJS programming. The time is maintained as a state variable with a class method updating the time every second.'
+                                componenttext={[
+                                    "This is my first React component with dynamic content. Actually, it was copied from the ",
+                                    <a href="https://reactjs.org/docs/state-and-lifecycle.html" target="_blank">ReactJS website</a>,
+                                    ". It is uses object-oriented ReactJS programming. The time is maintained as a state variable with a class method updating the time every second."
+                            ]}
+                            key="me"
                             />
 
                             <PlaygroundComponent

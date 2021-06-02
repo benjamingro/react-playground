@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/ToDo.css';
 
 
 // user input - includes validation
@@ -13,10 +14,10 @@ function TodoForm({addTodo}){
     }
   
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="mt-3" onSubmit={handleSubmit}>
         <input 
           type="text"
-          className="input"
+          className="handWriting"
           value={value}
           placeholder="Add Todo..."
           onChange={e => setValue(e.target.value)} />
