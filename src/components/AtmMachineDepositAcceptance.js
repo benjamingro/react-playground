@@ -1,16 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-
-import Form from 'react-bootstrap/Form';
-
-import DepositComponent from './DepositComponent.js'
-
-
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-
-
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -39,18 +27,11 @@ function AtmMachineDepositAcceptance({ setMachineState_initial, depositAmount, a
                 <div className="col" onClick={() => setMachineState_initial()}>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
-                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
-                    <FontAwesomeIcon icon={faArrowRight} />
-
-                </div> */}
             </div>
             <div className="row w-100 text-primary clickArea">
                 <div className="col-5" onClick={() => setMachineState_initial()}>
                     Home
                 </div>
-                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
-                    Withdraw $
-                </div> */}
             </div>
         </>
     )

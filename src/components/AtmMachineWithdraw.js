@@ -14,7 +14,6 @@ function AtmMachineWithdraw({ setMachineState_initial, withdrawFunds, accountBal
 
     const myWithdrawFunds = (value) => {
         withdrawFunds(value); 
-        // set machine state here
     }
 
     return (
@@ -27,18 +26,13 @@ function AtmMachineWithdraw({ setMachineState_initial, withdrawFunds, accountBal
                 <div className="col" onClick={() => setMachineState_initial()}>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
-                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
-                    <FontAwesomeIcon icon={faArrowRight} />
 
-                </div> */}
             </div>
             <div className="row w-100 text-primary clickArea">
                 <div className="col-5" onClick={() => setMachineState_initial()}>
                     Home
                 </div>
-                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
-                    Withdraw $
-                </div> */}
+
             </div>
         </>
     )

@@ -26,9 +26,6 @@ function AtmMachine() {
         setWithdrawAmount(Number(value));
         setAtmMachineState_withdrawAcceptance();
     }
-    // const getAccountBalance = () => accountBalance;
-
-    // const setAtmMachineStateHandler = value => setAtmMachineState(value); 
 
     const setAtmMachineState_initial = () => setAtmMachineState('initialState');
     const setAtmMachineState_withdraw = () => setAtmMachineState('withdrawState');
@@ -44,8 +41,6 @@ function AtmMachine() {
                 <div className="card-header d-flex justify-content-center atmMachineTitleStyles py-1">
                     ATM Machine&nbsp;
                     
-
-
                 </div>
                 <div className="card-body screenColor">
                     {atmMachineState === 'initialState' &&
