@@ -1,15 +1,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import FormGroup from 'react-bootstrap/FormGroup';
 
 import Form from 'react-bootstrap/Form';
 
-import NumPad from 'react-numpad';
-// import NumericInput  from 'numeric-keyboard'; 
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
-// import NumericInput from 'react-bootstrap/NumericInput';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,49 +18,69 @@ import '../css/AtmMachine.css';
 
 function AtmMachineDeposit({ setMachineState_initial, setMachineState_withdraw, depositFunds }) {
 
-    const submitDeposit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
+        alert(`depositing $${event.target.value}`);
+        // depositFunds(event.target.value); 
     }
 
-    const handleKeyPress = (event)=> {
-        alert("inside handleKeyPress"); 
-    }
+    const schema = yup.object().shape({
+        dollarAmount: yup.number()
+            .positive()
+            .required('please enter a value')
+            .min(0)
+
+        // firstName: yup.string().required(),
+        // lastName: yup.string().required(),
+        // username: yup.string().required(),
+        // city: yup.string().required(),
+        // state: yup.string().required(),
+        // zip: yup.string().required(),
+        // terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
+    });
+
 
     return (
         <>
 
             <p className="card-text">Enter the amount to deposit </p>
+            <Formik
+                validationSchema={schema}
+                onSubmit={handleSubmit}
+            >
+                {({ handleSubmit, touched, isValid, errors }) => (
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <Form.Group>
+                            <InputGroup className="mb-3">
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>$</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <Form.Control
+                                    aria-label="Amount (to the nearest dollar)"
+                                    name="dollarAmount"
+                                    isValid={touched.dollarAmount && !errors.dollarAmount}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.dollarAmount}
+                                </Form.Control.Feedback>
+                                <InputGroup.Append>
+                                    <InputGroup.Text>.00</InputGroup.Text>
+                                </InputGroup.Append>
+                            </InputGroup>
 
-            {/* <NumericInput type="number" placeholder="touch to input"  /> */}
-            {/* <NumPad /> */}
-            {/* <NumPad.Number
-                onChange={(value) => { console.log('value', value) }}
-                label={'Total'}
-                placeholder={'my placeholder'}
-                value={100}
-                decimal={2}
-            /> */}
-            <Form>
-                <Form.Group>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text>$</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl aria-label="Amount (to the nearest dollar)" />
+                        </Form.Group>
+                        <div className="row w-100">
+                            <div className="col d-flex justify-content-center">
+                                <Button variant="success" type="submit" >
+                                    Deposit
+                            </Button>
+                            </div>
+                        </div>
+                    </Form>
+                )}
 
-                        <InputGroup.Append>
-                            <InputGroup.Text>.00</InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup>
-                </Form.Group>
-                <div className="row w-100">
-                    <div className="col d-flex justify-content-center">
-                        <Button variant="success" type="submit" onSubmit={submitDeposit}>
-                            Deposit
-                        </Button>
-                    </div>
-                </div>
-            </Form>
+            </Formik>
+
 
             {/* <div className="row w-100">
                 <div className="col d-flex justify-content-center">
