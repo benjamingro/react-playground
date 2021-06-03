@@ -13,5 +13,7 @@
     cursor: pointer;
 }
 .screenColor{
-    background-color:antiquewhite;
+    background-color:#d6e6f6;
+    /* background-color:antiquewhite; */
+    min-height:270px !important;
 }

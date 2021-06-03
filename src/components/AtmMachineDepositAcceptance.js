@@ -19,38 +19,42 @@ import '../css/AtmMachine.css';
 
 
 
-function AtmMachineDeposit({ setMachineState_initial, setMachineState_withdraw, depositFunds }) {
+function AtmMachineDepositAcceptance({ setMachineState_initial, depositAmount, accountBalance }) {
 
-    const acceptDeposit = (value) => {
-        depositFunds(value); 
-    }
 
     return (
         <>
+            <div className="row w-100 mb-2">
+                <div className="col d-flex justify-content-center">
+                    Thank you
+                </div>
+            </div>
+            <p className="card-text text-secondary">Your deposit of <b className="text-dark">${depositAmount}</b> has been accepted</p>
+            <p className="card-text text-secondary mb-0">Account balance </p>
+            <p className="card-text d-flex justify-content-center bg-light border" style={{fontWeight:"bold"}}>
+                ${accountBalance}
+            </p>
 
-            <p className="card-text">Enter the amount to deposit </p>
-            <DepositComponent acceptDeposit={acceptDeposit}/>
-            
             <div className="row w-100 text-primary clickArea">
                 <div className="col" onClick={() => setMachineState_initial()}>
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
-                <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
+                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
                     <FontAwesomeIcon icon={faArrowRight} />
 
-                </div>
+                </div> */}
             </div>
             <div className="row w-100 text-primary clickArea">
                 <div className="col-5" onClick={() => setMachineState_initial()}>
-                    Back
+                    Home
                 </div>
-                <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
+                {/* <div className="col d-flex justify-content-end" onClick={() => setMachineState_withdraw()}>
                     Withdraw $
-                </div>
+                </div> */}
             </div>
         </>
     )
 }
 
-export default AtmMachineDeposit
+export default AtmMachineDepositAcceptance
 

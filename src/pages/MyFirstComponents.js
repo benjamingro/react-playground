@@ -39,9 +39,14 @@ class MyFirstComponents extends React.Component {
                                 componenttext="This component was created from the MIT xPRO Week 15 ATM Machine lesson.  "
                             />
                         <PlaygroundComponent
-                                componentname="FormValidation"
-                                componenttitle="FormValidation Component"
-                                componenttext="This component was created as a simple example of form validation with Formik, Yup, and React-Bootstrap.  "
+                                componentname="WithdrawComponent"
+                                componenttitle="Withdraw Component"
+                                componenttext="This component is similar to the DepositComponent with an additional validation criterion added for account balance ($100)."
+                            />
+                        <PlaygroundComponent
+                                componentname="DepositComponent"
+                                componenttitle="Deposit Component"
+                                componenttext="This component was created as a simple example of form validation with Formik, Yup, and React-Bootstrap. It is a building block for the MIT xPRO Week 15 ATM Machine lesson "
                             />
                         <PlaygroundComponent
                                 componentname="ToDoComponent"

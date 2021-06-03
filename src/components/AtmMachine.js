@@ -2,24 +2,31 @@ import React from 'react';
 import AtmMachineInitial from './AtmMachineInitial.js'
 import AtmMachineAccountBalance from './AtmMachineAccountBalance.js'
 import AtmMachineDeposit from './AtmMachineDeposit.js'
+import AtmMachineDepositAcceptance from './AtmMachineDepositAcceptance.js'
+import AtmMachineWithdraw from './AtmMachineWithdraw.js'
+import AtmMachineWithdrawAcceptance from './AtmMachineWithdrawAcceptance.js'
 
 
-import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import '../css/AtmMachine.css'; 
+import '../css/AtmMachine.css';
 
 function AtmMachine() {
     const [accountBalance, setAccountBalance] = React.useState(0);
-    const [atmMachineState, setAtmMachineState] = React.useState('initialState'); // initialState, withdrawState, depositState, accountBalanceState
+    const [atmMachineState, setAtmMachineState] = React.useState('initialState'); // initialState, withdrawState, depositState, accountBalanceState, depositAcceptanceState, withdrawAcceptanceState
+    const [depositAmount, setDepositAmount] = React.useState(0);
+    const [withdrawAmount, setWithdrawAmount] = React.useState(0);
+
 
     const depositFunds = value => {
-        setAccountBalance(accountBalance + value);
+        setAccountBalance(Number(accountBalance) + Number(value));
+        setDepositAmount(Number(value));
+        setAtmMachineState_depositAcceptance();
     }
     const withdrawFunds = value => {
-        setAccountBalance(accountBalance - value);
+        setAccountBalance(Number(accountBalance) - Number(value));
+        setWithdrawAmount(Number(value));
+        setAtmMachineState_withdrawAcceptance();
     }
-    const getAccountBalance = () => accountBalance;
+    // const getAccountBalance = () => accountBalance;
 
     // const setAtmMachineStateHandler = value => setAtmMachineState(value); 
 
@@ -27,6 +34,8 @@ function AtmMachine() {
     const setAtmMachineState_withdraw = () => setAtmMachineState('withdrawState');
     const setAtmMachineState_deposit = () => setAtmMachineState('depositState');
     const setAtmMachineState_accountBalance = () => setAtmMachineState('accountBalanceState');
+    const setAtmMachineState_depositAcceptance = () => setAtmMachineState('depositAcceptanceState');
+    const setAtmMachineState_withdrawAcceptance = () => setAtmMachineState('withdrawAcceptanceState');
 
 
     return (
@@ -34,12 +43,7 @@ function AtmMachine() {
             <div className="card atmMachineFont">
                 <div className="card-header d-flex justify-content-center atmMachineTitleStyles py-1">
                     ATM Machine&nbsp;
-                    {/* <FontAwesomeIcon icon={faDollarSign} style={{color:"#ff0018",fontSize:"small"}} className="mt-1"/>&nbsp;
-                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#ffa52c",fontSize:"small"}} className="mt-1"/>&nbsp;
-                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#ffff41",fontSize:"small"}} className="mt-1"/>&nbsp;
-                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#008018",fontSize:"small"}} className="mt-1"/>&nbsp;
-                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#0000f9",fontSize:"small"}} className="mt-1"/>&nbsp;
-                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#86007d",fontSize:"small"}} className="mt-1"/>&nbsp; */}
+                    
 
 
                 </div>
@@ -63,6 +67,27 @@ function AtmMachine() {
                             setMachineState_initial={setAtmMachineState_initial}
                             setMachineState_withdraw={setAtmMachineState_withdraw}
                             depositFunds={depositFunds}
+
+                        />}
+                    {atmMachineState === 'depositAcceptanceState' &&
+                        <AtmMachineDepositAcceptance
+                            setMachineState_initial={setAtmMachineState_initial}
+                            depositAmount={depositAmount}
+                            accountBalance={accountBalance}
+
+                        />}
+                    {atmMachineState === 'withdrawState' &&
+                        <AtmMachineWithdraw
+                            setMachineState_initial={setAtmMachineState_initial}
+                            withdrawFunds={withdrawFunds}
+                            accountBalance={accountBalance}
+
+                        />}
+                    {atmMachineState === 'withdrawAcceptanceState' &&
+                        <AtmMachineWithdrawAcceptance
+                            setMachineState_initial={setAtmMachineState_initial}
+                            withdrawAmount={withdrawAmount}
+                            accountBalance={accountBalance}
 
                         />}
 

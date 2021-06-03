@@ -9,7 +9,8 @@ import ColorNumbersUi from './ColorNumbersUi.js';
 import TextMirror from './TextMirror.js';
 
 import ToDoComponent from './ToDoComponent.js';
-import FormValidation from './FormValidation.js';
+import DepositComponent from './DepositComponent.js';
+import WithdrawComponent from './WithdrawComponent.js';
 
 import AtmMachine from './AtmMachine.js';
 
@@ -48,9 +49,12 @@ class PlaygroundComponent extends React.Component {
             case 'ToDoComponent':
                 this.Component = <ToDoComponent />;
                 break;
-            case 'FormValidation':
-                this.Component = <FormValidation />;
-                break; 
+            case 'DepositComponent':
+                this.Component = <DepositComponent acceptDeposit={(value) => alert(value)} />;
+                break;
+            case 'WithdrawComponent':
+                this.Component = <WithdrawComponent withdrawFunds={(value) => alert(value)} accountBalance="100" />;
+                break;
             case 'AtmMachine':
                 this.Component = <AtmMachine />;
                 break;

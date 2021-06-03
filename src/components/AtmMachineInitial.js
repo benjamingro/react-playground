@@ -1,12 +1,25 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+
 
 
 function AtmMachineInitial({ setMachineState_accountBalance, setMachineState_withdraw, setMachineState_deposit }) {
     return (
         <>
-            <p className="card-text">Welcome. Please select from the choices below.</p>
+            <div className="row w-100 mb-3">
+                <div className="col d-flex justify-content-center">
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#ff0018"}} className="mt-1"/>&nbsp;
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#ffa52c"}} className="mt-1"/>&nbsp;
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#ffff41"}} className="mt-1"/>&nbsp;
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#008018"}} className="mt-1"/>&nbsp;
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#0000f9"}} className="mt-1"/>&nbsp;
+                    <FontAwesomeIcon icon={faDollarSign} style={{color:"#86007d"}} className="mt-1"/>&nbsp;
+                </div>
+            </div>
+            <p className="card-text mb-4">Welcome. Please select from the choices below.</p>
 
             <div className="row w-100">
                 <div className="col-4 d-flex justify-content-center" >
