@@ -9,6 +9,8 @@ import ColorNumbersUi from './ColorNumbersUi.js';
 import TextMirror from './TextMirror.js';
 
 import ToDoComponent from './ToDoComponent.js';
+import FormValidation from './FormValidation.js';
+
 import AtmMachine from './AtmMachine.js';
 
 
@@ -46,9 +48,12 @@ class PlaygroundComponent extends React.Component {
             case 'ToDoComponent':
                 this.Component = <ToDoComponent />;
                 break;
+            case 'FormValidation':
+                this.Component = <FormValidation />;
+                break; 
             case 'AtmMachine':
                 this.Component = <AtmMachine />;
-                break; 
+                break;
             default:
                 this.Component = <HelloWorld />;
                 break;

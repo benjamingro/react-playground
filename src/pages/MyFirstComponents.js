@@ -39,6 +39,11 @@ class MyFirstComponents extends React.Component {
                                 componenttext="This component was created from the MIT xPRO Week 15 ATM Machine lesson.  "
                             />
                         <PlaygroundComponent
+                                componentname="FormValidation"
+                                componenttitle="FormValidation Component"
+                                componenttext="This component was created as a simple example of form validation with Formik, Yup, and React-Bootstrap.  "
+                            />
+                        <PlaygroundComponent
                                 componentname="ToDoComponent"
                                 componenttitle="ToDo Component"
                                 componenttext="This component was created from the MIT xPRO Week 14 ToDo List lesson.  "
