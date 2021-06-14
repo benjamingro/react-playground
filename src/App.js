@@ -28,9 +28,9 @@ function App() {
           <Route exact path="/myfirstcomponents">
             <MyFirstComponents />
           </Route>
-          <Route exact path="/simpleform">
+          {/* <Route exact path="/simpleform">
             <SimpleForm />
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     </>

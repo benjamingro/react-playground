@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Archivo+Black&display=swap');
+
+.hnStyles{
+    font-family:'Archivo', sans-serif;
+}
+
+.hoverMe{
+    font-weight:bold; 
+}

@@ -33,27 +33,38 @@ class MyFirstComponents extends React.Component {
                     <div className="col-lg-10">
                         <div className="row w-100">
 
-                        <PlaygroundComponent
+                            <PlaygroundComponent
+                                componentname="HNSearch"
+                                componenttitle="HNSearch Component"
+                                componenttext="This is a search button created for searching Hacker News.  "
+                                componentwidth="6"
+                            />
+                            <PlaygroundComponent
                                 componentname="AtmMachine"
                                 componenttitle="AtmMachine Component"
                                 componenttext="This component was created from the MIT xPRO Week 15 ATM Machine lesson.  "
                             />
-                        <PlaygroundComponent
+                            <PlaygroundComponent
                                 componentname="WithdrawComponent"
                                 componenttitle="Withdraw Component"
                                 componenttext="This component is similar to the DepositComponent with an additional validation criterion added for account balance ($100)."
                             />
-                        <PlaygroundComponent
+                            <PlaygroundComponent
                                 componentname="DepositComponent"
                                 componenttitle="Deposit Component"
                                 componenttext="This component was created as a simple example of form validation with Formik, Yup, and React-Bootstrap. It is a building block for the MIT xPRO Week 15 ATM Machine lesson "
                             />
-                        <PlaygroundComponent
+                            <PlaygroundComponent
                                 componentname="ToDoComponent"
                                 componenttitle="ToDo Component"
                                 componenttext="This component was created from the MIT xPRO Week 14 ToDo List lesson.  "
                             />
-
+                            <PlaygroundComponent
+                                componentname="MyBasicForm"
+                                componenttitle="MyBasicForm Component"
+                                componenttext="This is a React form created as part of the MIT xPRO Week 13 Coding Challenge: Experimenting With Formik. "
+                                componentwidth="6"
+                            />
                             <PlaygroundComponent
                                 componentname="TextMirror"
                                 componenttitle="TextMirror Component"
@@ -92,8 +103,8 @@ class MyFirstComponents extends React.Component {
                                     "This is my first React component with dynamic content. Actually, it was copied from the ",
                                     <a href="https://reactjs.org/docs/state-and-lifecycle.html" target="_blank">ReactJS website</a>,
                                     ". It is uses object-oriented ReactJS programming. The time is maintained as a state variable with a class method updating the time every second."
-                            ]}
-                            key="me"
+                                ]}
+                                key="me"
                             />
 
                             <PlaygroundComponent

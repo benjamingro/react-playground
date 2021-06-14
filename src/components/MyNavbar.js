@@ -21,21 +21,24 @@ class MyNavbar extends React.Component {
     }
 
     clickHandler(event) {
+        // if(event.target.id==='navbar-brand-id')
+        // {
 
+        // }
     }
 
 
     render() {
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#/">React Playground</Navbar.Brand>
+                <Navbar.Brand href="#/" id="navbar-brand-id">React Playground</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         {/* className={this.state.class.myfirstcomponents} */}
                         {/*  className={this.state.class.simpleform}*/}
-                        <Nav.Link href="#/myfirstcomponents" name="name-nav-link" id="myfirstcomponents" onClick={this.clickHandler} className={()=>{return this.state.myfirstcomponents; }}>My First Components</Nav.Link>
-                        <Nav.Link href="#/simpleform" name="name-nav-link" id="simpleform" onClick={this.clickHandler} className={()=>{return this.state.simpleform; }}>Simple Form</Nav.Link>
+                        <Nav.Link href="#/myfirstcomponents" name="name-nav-link" id="myfirstcomponents" onClick={this.clickHandler} >My First Components</Nav.Link>
+                        {/* <Nav.Link href="#/simpleform" name="name-nav-link" id="simpleform" onClick={this.clickHandler} className={()=>{return this.state.simpleform; }}>Simple Form</Nav.Link> */}
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

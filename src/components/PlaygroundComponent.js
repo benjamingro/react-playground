@@ -14,6 +14,10 @@ import WithdrawComponent from './WithdrawComponent.js';
 
 import AtmMachine from './AtmMachine.js';
 
+import HNSearch from './HNSearch.js';
+
+import MyBasicForm from './MyBasicForm.js';
+
 
 
 class PlaygroundComponent extends React.Component {
@@ -23,6 +27,7 @@ class PlaygroundComponent extends React.Component {
         this.ComponentName = props.componentname;
         this.ComponentTitle = props.componenttitle;
         this.ComponentText = props.componenttext;
+        this.ComponentWidth = props.componentwidth; 
         this.Component = <></>;
         switch (this.ComponentName) {
             case 'HelloWorld':
@@ -58,6 +63,12 @@ class PlaygroundComponent extends React.Component {
             case 'AtmMachine':
                 this.Component = <AtmMachine />;
                 break;
+            case 'HNSearch':
+                this.Component = <HNSearch />;
+                break;
+            case 'MyBasicForm':
+                this.Component = <MyBasicForm />;
+                break;
             default:
                 this.Component = <HelloWorld />;
                 break;
@@ -86,7 +97,7 @@ class PlaygroundComponent extends React.Component {
 
         return (
 
-            <div className="col-lg-3 my-2">
+            <div className={"my-2 "+(this.ComponentWidth?"col-lg-"+this.ComponentWidth:"col-lg-3")}>
                 <div className="card h-100">
                     <div className="card-header">
                         {/* <h4>ColorNumbersUi Component</h4> */}
