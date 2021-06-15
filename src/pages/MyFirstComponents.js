@@ -35,7 +35,7 @@ class MyFirstComponents extends React.Component {
 
                             <PlaygroundComponent
                                 componentname="HNSearch"
-                                componenttitle="HNSearch Component"
+                                componenttitle="Hacker News Search"
                                 componenttext="This is a search button created for searching Hacker News.  "
                                 componentwidth="6"
                             />

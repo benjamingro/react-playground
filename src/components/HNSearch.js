@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -29,41 +28,76 @@ function HNSearch() {
     const [nbPages, setNbPages] = React.useState(0);
     const [hitsPerPage, setHitsPerPage] = React.useState(0);
 
+    function handleSetPage(newValue) {
+        setPage(newValue);
+    }
 
-    const hnSearch = (searchTerm=searchTerm, page=0) => {
+    function handleSetSearchTerm(newValue){
+        // setPage(newValue); 
+        setSearchTerm(newValue); 
+    }
 
-        setSearchTerm(searchTerm);
-        const search_url = `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`;
-        // alert(search_url);
-        axios.get(search_url).then(response => {
-            // alert(JSON.stringify(response.data.hits));
-            setHits(response.data.hits);
-            setNbHits(response.data.nbHits);
-            setPage(response.data.page);
-            setNbPages(response.data.nbPages);
-            setHitsPerPage(response.data.hitsPerPage);
-        }).catch(error => {
-            alert(JSON.stringify(error));
-        });
+    React.useEffect(()=>{
+        function hnSearch() {
 
-    };
+            const search_url = `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`;
+    
+            // alert(`inside hnSearch
+            //         search_url = ${search_url}
+            //         searchTerm = ${searchTerm}
+            //         page = ${page}
+            //         `);
+    
+            axios.get(search_url).then(response => {
+                setHits(response.data.hits);
+                setNbHits(response.data.nbHits);
+                setPage(response.data.page);
+                setNbPages(response.data.nbPages);
+                setHitsPerPage(response.data.hitsPerPage);
+            }).catch(error => {
+                alert(JSON.stringify(error));
+            });
+    
+        };
+
+        hnSearch();
+    },[page,searchTerm]);
+
 
     return (
         <div className="hnStyles">
-            <HNSearchForm hnSearch={hnSearch} />
+            <HNSearchForm handleSetSearchTerm={handleSetSearchTerm} />
             <HNHitList hitList={hits} />
-            {nbPages > 1 && <HNPageControl page={page} nbPages={nbPages} setPage={setPage} hnSearch={hnSearch} /> }
+            {nbPages > 1 && <HNPageControl page={page} nbPages={nbPages} handleSetPage={handleSetPage} />}
         </div>
     )
 }
 
 function HNHitList({ hitList }) {
+
+    const filtered_hitList = hitList.filter(value=>
+        (value.url!=''&&value.url!=null)||(value.story_url!=''&&value.story_url!=null)
+    ); 
+
+    const filtered_hitList_2 = filtered_hitList.map((value,index)=>{
+        if(value.url==''||value.url==null)
+            value.url = value.story_url; 
+        if(value.title==''||value.title==null)
+            value.title=value.story_title; 
+        return value; 
+    });
+
+
     return (
         <>
             <div className="card" style={{ maxHeight: '250px', overflowY: 'scroll' }}>
                 <div className="card-body p-0">
                     <ListGroup >
-                        {hitList.map((value, index) => {
+                        {filtered_hitList_2.map((value, index) => {
+                            // if(value.url==='')
+                            //     value.url = value.story_url; 
+                            // if(value.title==='')
+                            //     value.title=value.story_title;
                             return (
 
                                 <ListGroup.Item key={index} id={'item_id_' + index}
@@ -96,9 +130,7 @@ function HNHitList({ hitList }) {
     )
 }
 
-
-
-function HNSearchForm({ hnSearch }) {
+function HNSearchForm({ handleSetSearchTerm }) {
 
     const schema = yup.object().shape({
         searchTerm: yup.string().required('required')
@@ -112,8 +144,7 @@ function HNSearchForm({ hnSearch }) {
                 validationSchema={schema}
                 initialValues={{ searchTerm: '' }}
                 onSubmit={values => {
-
-                    hnSearch(values.searchTerm);
+                    handleSetSearchTerm(values.searchTerm);
                 }}
                 validateOnChange={false}
                 validateOnBlur={false}
@@ -156,20 +187,39 @@ function HNSearchForm({ hnSearch }) {
     )
 }
 
-function HNPageControl({ page, nbPages, setPage, hnSearch }) {
+
+function HNPageControl({ page, nbPages, handleSetPage }) {
+    const firstPage = ()=>{
+        handleSetPage(0);
+    };
+
+    const previousPage = ()=>{
+        handleSetPage(page-1);  
+    }; 
+
+    const nextPage = () =>{
+        handleSetPage(page+1); 
+    };
+
+    const lastPage = () =>{
+        handleSetPage(nbPages-1); 
+    };
+
+    
+
     return (
         <>
             <div className="row w-100 mt-3">
                 <div className="col-lg-2">
-                    
+
                 </div>
                 <div className="col-lg-1">
-                    <Button variant="secondary">
+                    <Button variant="secondary" className={page===0?'disabled':''} onClick={firstPage} >
                         <FontAwesomeIcon icon={faAngleDoubleLeft} />
                     </Button>
                 </div>
                 <div className="col-lg-1">
-                    <Button variant="secondary">
+                    <Button variant="secondary" className={page===0?'disabled':''} onClick={previousPage}>
                         <FontAwesomeIcon icon={faAngleLeft} />
                     </Button>
                 </div>
@@ -177,19 +227,19 @@ function HNPageControl({ page, nbPages, setPage, hnSearch }) {
                     Page
                 </div>
                 <div className="col-lg-1">
-                    <HNPageForm hnSearch={hnSearch} page={page} setPage={setPage} nbPages={nbPages}/> 
+                    <HNPageForm page={page} handleSetPage={handleSetPage} nbPages={nbPages} />
                 </div>
                 <div className="col-lg-2 text-secondary pt-1">
                     of {nbPages}
                 </div>
-                
+
                 <div className="col-lg-1">
-                    <Button variant="secondary">
+                    <Button variant="secondary" className={page===nbPages-1?'disabled':''} onClick={nextPage}>
                         <FontAwesomeIcon icon={faAngleRight} />
                     </Button>
                 </div>
                 <div className="col-lg-1">
-                    <Button variant="secondary">
+                    <Button variant="secondary" className={page===nbPages-1?'disabled':''} onClick={lastPage}>
                         <FontAwesomeIcon icon={faAngleDoubleRight} />
                     </Button>
                 </div>
@@ -199,14 +249,14 @@ function HNPageControl({ page, nbPages, setPage, hnSearch }) {
     )
 }
 
-function HNPageForm({ hnSearch,page,setPage,nbPages }) {
+function HNPageForm({ page, handleSetPage, nbPages }) {
 
     const schema = yup.object().shape({
         page: yup.number().typeError('must be a number')
-        .required('required')
-        .positive('must be positive')
-        .integer('must be an integer')
-        .max(Number(nbPages),`must not exceed ${nbPages}`)
+            .required('required')
+            .positive('must be positive')
+            .integer('must be an integer')
+            .max(Number(nbPages), `must not exceed ${nbPages}`)
     });
 
 
@@ -215,26 +265,24 @@ function HNPageForm({ hnSearch,page,setPage,nbPages }) {
         <>
             <Formik
                 validationSchema={schema}
-                initialValues={{ page: page+1 }}
+                initialValues={{ page: page + 1 }}
                 onSubmit={values => {
-                    const decremented_page = Number(values.page) - 1; 
-                    alert(`decremented_page = ${decremented_page}`);
-                    setPage(decremented_page );
-                    hnSearch(null,null,decremented_page);
+                    const decremented_page = Number(values.page) - 1;
+                    handleSetPage(Number(decremented_page));
                 }}
                 validateOnChange={false}
                 validateOnBlur={false}
             >
                 {({ errors, touched, onSubmit }) => (
                     <Form >
-                        
+
                         <div className="row w-100">
                             <div className="col">
                                 <InputGroup className="">
-                                    <Field name="page" style={{maxWidth:'40px'}} />
+                                    <Field name="page" style={{ maxWidth: '40px' }} />
                                 </InputGroup>
                             </div>
-                            
+
                         </div>
 
                         <div className="">
