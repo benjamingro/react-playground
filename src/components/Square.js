@@ -2,30 +2,30 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes,faCircle} from '@fortawesome/free-solid-svg-icons';
 
-function Square({ xState, updateBoard, rowIndex, colIndex, winner }) {
+function Square({ myLetter, clickHandler, rowIndex, colIndex, myWinner }) {
     //xState == true, false
     // myState = 'X','O',''
     // winner = 'horizontal','vertical','diagonalRight', 'diagonalLeft', 'none' 
-    const [myState, setMyState] = React.useState('')
-    const clickHandler = () => {
-        if (myState == '') {
-            xState ? setMyState("X") : setMyState("O");
-            // send state back up to board 
-            updateBoard(myState, rowIndex, colIndex);
-        }
-        // else do nothing, the square is already occupied 
+    // const [myState, setMyState] = React.useState('');
+    // const clickHandler = () => {
+    //     if (myState == '') {
+    //         xState ? setMyState("X") : setMyState("O");
+    //         // send state back up to board 
+    //         updateBoard(myState, rowIndex, colIndex);
+    //     }
+    //     // else do nothing, the square is already occupied 
 
-    };
+    // };
 
     return (
         <>
-            <div className="col border d-flex justify-content-center pt-2" onClick={clickHandler} style={{ maxHeight: '50px', maxWidth: '50px', minHeight:'50px',minWidth:'50px',fontSize:"1.4rem" }}>
-                {myState==='X'?<FontAwesomeIcon icon={faTimes} className="mt-1"/>:''}
-                {myState==='O'?<span style={{fontWeight:"bold"}}>O</span>:''}
-                {winner==='diagonalRight'?<DiagonalRight />:''}
-                {winner==='diagonalLeft'?<DiagonalLeft />:''}
-                {winner==='vertical'?<Vertical />:''}
-                {winner==='horizontal'?<Horizontal />:''}
+            <div className="col border d-flex justify-content-center pt-2" onClick={()=>clickHandler(rowIndex,colIndex)} style={{ maxHeight: '50px', maxWidth: '50px', minHeight:'50px',minWidth:'50px',fontSize:"1.4rem" }}>
+                {myLetter==='X'?<FontAwesomeIcon icon={faTimes} className="mt-1"/>:''}
+                {myLetter==='O'?<span style={{fontWeight:"bold"}}>O</span>:''}
+                {myWinner==='diagonalRight'?<DiagonalRight />:''}
+                {myWinner==='diagonalLeft'?<DiagonalLeft />:''}
+                {myWinner==='vertical'?<Vertical />:''}
+                {myWinner==='horizontal'?<Horizontal />:''}
 
             </div>
         </>
@@ -59,7 +59,7 @@ function Vertical(){
 function Horizontal(){
     return(
         <svg width="50px" height="50px" style={{position:"absolute",top:"-2px",left:"-2px"}}>
-                    <line x1="0" y1="25" x2="50" y2="25S" style={{stroke:"rgb(94,182,92)",strokeWidth:"3"}}></line>
+                    <line x1="0" y1="25" x2="50" y2="25" style={{stroke:"rgb(94,182,92)",strokeWidth:"3"}}></line>
                 </svg>
     )
 }
