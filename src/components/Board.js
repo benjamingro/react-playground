@@ -22,18 +22,20 @@ function Board() {
     });
 
     const updateBoard = (myState, rowIndex, colIndex) => {
-
+        let myUpdateBoard = myBoard.slice(); 
+        myUpdateBoard[rowIndex][colIndex]=myState; 
+        setMyBoard(myUpdateBoard); 
+        // update xState 
+        setXState(!xState);
+        // update history 
+        // check for winner 
     };
 
-    // const getRow = (rowIndex) =>{
-    //     let rowArray = []; 
-    //     for(let j = 0; j< boardSize;j++){
-    //         rowArray.push(
-    //             <Square xState={xState} updateBoard={updateBoard} rowIndex={rowIndex} colIndex={j} / >
-    //         );
-    //     }
-    //     return(rowArray)
-    // }
+    
+
+
+
+
 
     return (
         <>
@@ -45,16 +47,12 @@ function Board() {
                                 {
                                     myBoard[rowIndex].map((value,colIndex)=>{
                                         return(
-
-                                            // <h1>hello</h1>
                                             <Square xState={xState} updateBoard={updateBoard} rowIndex={rowIndex} colIndex={colIndex} />
-                            // <h5>{index}</h5>
                                         )
                                     })
                                 }
                             </div>
-                            {/* <Square xState={xState} updateBoard={updateBoard} rowIndex={0} colIndex={0} />
-                            <h5>{index}</h5> */}
+                            
                         </>
                     )
                 })
