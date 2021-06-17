@@ -32,11 +32,16 @@ class MyFirstComponents extends React.Component {
                     </div>
                     <div className="col-lg-10">
                         <div className="row w-100">
-
+                        <PlaygroundComponent
+                                componentname="Board"
+                                componenttitle="Board"
+                                componenttext="This is a tic tac toe board  "
+                                componentwidth="6"
+                            />
                             <PlaygroundComponent
                                 componentname="HNSearch"
                                 componenttitle="Hacker News Search"
-                                componenttext="This is a search button created for searching Hacker News.  "
+                                componenttext="This is a tiny react app for searching Hacker News.  "
                                 componentwidth="6"
                             />
                             <PlaygroundComponent

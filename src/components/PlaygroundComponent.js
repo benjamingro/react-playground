@@ -18,6 +18,8 @@ import HNSearch from './HNSearch.js';
 
 import MyBasicForm from './MyBasicForm.js';
 
+import Board from './Board.js';
+
 
 
 class PlaygroundComponent extends React.Component {
@@ -27,7 +29,7 @@ class PlaygroundComponent extends React.Component {
         this.ComponentName = props.componentname;
         this.ComponentTitle = props.componenttitle;
         this.ComponentText = props.componenttext;
-        this.ComponentWidth = props.componentwidth; 
+        this.ComponentWidth = props.componentwidth;
         this.Component = <></>;
         switch (this.ComponentName) {
             case 'HelloWorld':
@@ -69,6 +71,10 @@ class PlaygroundComponent extends React.Component {
             case 'MyBasicForm':
                 this.Component = <MyBasicForm />;
                 break;
+            case 'Board':
+                this.Component = <Board />;
+                break;
+
             default:
                 this.Component = <HelloWorld />;
                 break;
@@ -97,7 +103,7 @@ class PlaygroundComponent extends React.Component {
 
         return (
 
-            <div className={"my-2 "+(this.ComponentWidth?"col-lg-"+this.ComponentWidth:"col-lg-3")}>
+            <div className={"my-2 " + (this.ComponentWidth ? "col-lg-" + this.ComponentWidth : "col-lg-3")}>
                 <div className="card h-100">
                     <div className="card-header">
                         {/* <h4>ColorNumbersUi Component</h4> */}
