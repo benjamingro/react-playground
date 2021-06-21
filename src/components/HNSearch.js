@@ -40,7 +40,7 @@ function HNSearch() {
     React.useEffect(()=>{
         function hnSearch() {
 
-            const search_url = `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`;
+            const search_url = `https://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`;
     
             // alert(`inside hnSearch
             //         search_url = ${search_url}

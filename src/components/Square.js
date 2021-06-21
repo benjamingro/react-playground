@@ -1,27 +1,32 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes,faCircle} from '@fortawesome/free-solid-svg-icons';
+import { faTimes} from '@fortawesome/free-solid-svg-icons';
 
-function Square({ myLetter, clickHandler, rowIndex, colIndex, myWinner }) {
-    //xState == true, false
-    // myState = 'X','O',''
-    // winner = 'horizontal','vertical','diagonalRight', 'diagonalLeft', 'none' 
-    // const [myState, setMyState] = React.useState('');
-    // const clickHandler = () => {
-    //     if (myState == '') {
-    //         xState ? setMyState("X") : setMyState("O");
-    //         // send state back up to board 
-    //         updateBoard(myState, rowIndex, colIndex);
-    //     }
-    //     // else do nothing, the square is already occupied 
+function Square({ myLetter, clickHandler, rowIndex, colIndex, myWinner,boardSize,player1Color,player2Color }) {
 
-    // };
+    let classList = "col border border-warning d-flex justify-content-center pt-2"; 
+    if(rowIndex===0)
+    {
+        classList += " border-top-0";
+    }
+    if(colIndex===0)
+    {
+        classList += " border-left-0";
+    }
+    if(colIndex===(boardSize-1))
+    {
+        classList += " border-right-0";
+    }
+    if(rowIndex===(boardSize-1))
+    {
+        classList += " border-bottom-0";
+    }
 
     return (
         <>
-            <div className="col border d-flex justify-content-center pt-2" onClick={()=>clickHandler(rowIndex,colIndex)} style={{ maxHeight: '50px', maxWidth: '50px', minHeight:'50px',minWidth:'50px',fontSize:"1.4rem" }}>
-                {myLetter==='X'?<FontAwesomeIcon icon={faTimes} className="mt-1"/>:''}
-                {myLetter==='O'?<span style={{fontWeight:"bold"}}>O</span>:''}
+            <div className={classList } onClick={()=>clickHandler(rowIndex,colIndex)} style={{ maxHeight: '50px', maxWidth: '50px', minHeight:'50px',minWidth:'50px',fontSize:"1.4rem" }}>
+                {myLetter==='X'?<FontAwesomeIcon icon={faTimes} className="mt-1" style={{color:player1Color}}/>:''}
+                {myLetter==='O'?<span style={{fontWeight:"bold",color:player2Color}}>O</span>:''}
                 {myWinner==='diagonalRight'?<DiagonalRight />:''}
                 {myWinner==='diagonalLeft'?<DiagonalLeft />:''}
                 {myWinner==='vertical'?<Vertical />:''}
@@ -63,6 +68,8 @@ function Horizontal(){
                 </svg>
     )
 }
+
+
 
 export default Square
 

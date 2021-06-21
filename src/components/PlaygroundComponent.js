@@ -103,7 +103,7 @@ class PlaygroundComponent extends React.Component {
 
         return (
 
-            <div className={"my-2 " + (this.ComponentWidth ? "col-lg-" + this.ComponentWidth : "col-lg-3")}>
+            <div className={"my-2 " + (this.ComponentWidth ? "col-lg-" + this.ComponentWidth : "col-lg-4")}>
                 <div className="card h-100">
                     <div className="card-header">
                         {/* <h4>ColorNumbersUi Component</h4> */}

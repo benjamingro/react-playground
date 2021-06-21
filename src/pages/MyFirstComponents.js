@@ -34,8 +34,8 @@ class MyFirstComponents extends React.Component {
                         <div className="row w-100">
                         <PlaygroundComponent
                                 componentname="Board"
-                                componenttitle="Board"
-                                componenttext="This is a tic tac toe board  "
+                                componenttitle="Tic Tac Toe Game"
+                                componenttext="This is a tic tac toe game implemented in React."
                                 componentwidth="6"
                             />
                             <PlaygroundComponent
