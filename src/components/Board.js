@@ -7,7 +7,6 @@ import '../css/Board.css';
 
 
 function Board() {
-    // const boardSize = 3;
     const [boardSize,setBoardSize] = React.useState(3); 
     const [xState, setXState] = React.useState(true);
     const [boardHistory, setBoardHistory] = React.useState([[...getBlankBoard()]]);
@@ -36,39 +35,19 @@ function Board() {
     const clickHandler = (rowIndex, colIndex) => {
 
         let myUpdateBoard = myBoard.slice();
-        // let previousBoardHistory = boardHistory.slice(); 
+
         let previousBoardHistory = JSON.parse(JSON.stringify(boardHistory)); 
-
-        alert(JSON.stringify(previousBoardHistory));
-
-        // alert(JSON.stringify(previousBoardHistory));
 
         if (myUpdateBoard[rowIndex][colIndex].myLetter === '' && !winner) {
             xState ? myUpdateBoard[rowIndex][colIndex].myLetter = "X" : myUpdateBoard[rowIndex][colIndex].myLetter = "O";
-            // start update history
-            // const previousBoard = myBoard.slice(); 
-            // let previousBoardHistory = history.slice(); 
-            alert(JSON.stringify(myUpdateBoard));
-            // previousBoardHistory.push(myUpdateBoard.slice());
+
             previousBoardHistory.push(JSON.parse(JSON.stringify(myUpdateBoard)));
 
-            // const newHistory = [...previousBoardHistory,myUpdateBoard]; 
-            // alert(JSON.stringify(previousBoardHistory));
-            // alert(JSON.stringify(newHistory));
-
-            // setBoardHistory(newHistory);
-            // setBoardHistory(previousBoardHistory.slice()); 
             setBoardHistory(previousBoardHistory); 
 
-
-            //end updateHistory 
             setMyBoard(myUpdateBoard);
             calculateWinner();
             setXState(!xState);
-
-            alert(JSON.stringify(boardHistory));
-
-            
 
         }
     };
@@ -90,16 +69,16 @@ function Board() {
 
     const undoMove = () => {
         
-        // const myHistory = boardHistory.slice(); 
-        // if(myHistory.length>1)
-        // {
-        //     myHistory.pop(); 
-        //     const previousMove = myHistory[myHistory.length-1];
-        //     // alert(previousMove); 
-        //     setMyBoard(previousMove); 
-        //     setBoardHistory(myHistory); 
-        //     setXState(!xState);
-        // }
+        const myHistory = JSON.parse(JSON.stringify(boardHistory)); 
+        if(myHistory.length>1)
+        {
+            myHistory.pop(); 
+            const previousMove = myHistory[myHistory.length-1];
+            setMyBoard(previousMove); 
+            setBoardHistory(myHistory); 
+            setXState(!xState);
+            setWinner(false); 
+        }
          
     }
 
@@ -183,7 +162,6 @@ function Board() {
             <div className="row w-100 mb-4">
                 
                 <div className="col d-flex justify-content-center" style={{ fontSize: "1.5rem", color: (xState ? player1Color : player2Color) }}>
-                    {/* {xState ? "X" : "O"}'s turn */}
                     {xState && !winner && <span className="badge badge-pill badge-primary pt-2">X's turn</span>}
                     {!xState && !winner && <span className="badge badge-pill badge-danger pt-2">O's turn</span>}
 
@@ -217,32 +195,24 @@ function Board() {
                                     })
                                 }
                             </div>
-
-
                         </>
                     )
                 })
             }
             {/* control row 2 */}
             <div className="row w-100 mt-4">
-            {/* <div className="col-lg-1"></div> */}
 
                 <div className="col-lg-4 d-flex justify-content-center">
-                    <Button variant="warning" onClick={resetBoard}>Reset board</Button>
+                    <Button variant="warning" className={(boardHistory.length===1?'disabled':'')} onClick={resetBoard}>Reset board</Button>
                 </div>
-                {/* <div className="col-lg-4 d-flex justify-content-center">
-                    <Button variant="info" className={(boardHistory.length<2?'disabled':'')} onClick={undoMove}>Undo move</Button>
-                </div> */}
                 <div className="col-lg-4 d-flex justify-content-center">
-                    <Button variant="info" className="disabled" onClick={undoMove}>Undo move</Button>
+                    <Button variant="info" className={(boardHistory.length===1?'disabled':'')} onClick={undoMove}>Undo move</Button>
                 </div>
 
                 <div className="col-lg-4 d-flex justify-content-center">
                     <BoardSizeSelect boardSize={boardSize} boardSizeSelectHandler={boardSizeSelectHandler}/> 
                 </div>
                 
-                {/* <div className="col-lg-1"></div> */}
-
             </div>
         </div>
     )
