@@ -36,7 +36,11 @@ function Board() {
     const clickHandler = (rowIndex, colIndex) => {
 
         let myUpdateBoard = myBoard.slice();
-        let previousBoardHistory = boardHistory.slice(); 
+        // let previousBoardHistory = boardHistory.slice(); 
+        let previousBoardHistory = JSON.parse(JSON.stringify(boardHistory)); 
+
+        alert(JSON.stringify(previousBoardHistory));
+
         // alert(JSON.stringify(previousBoardHistory));
 
         if (myUpdateBoard[rowIndex][colIndex].myLetter === '' && !winner) {
@@ -44,20 +48,26 @@ function Board() {
             // start update history
             // const previousBoard = myBoard.slice(); 
             // let previousBoardHistory = history.slice(); 
-            // alert(JSON.stringify(previousBoardHistory));
-            
-            previousBoardHistory.push(myUpdateBoard.slice());
+            alert(JSON.stringify(myUpdateBoard));
+            // previousBoardHistory.push(myUpdateBoard.slice());
+            previousBoardHistory.push(JSON.parse(JSON.stringify(myUpdateBoard)));
+
             // const newHistory = [...previousBoardHistory,myUpdateBoard]; 
             // alert(JSON.stringify(previousBoardHistory));
             // alert(JSON.stringify(newHistory));
 
             // setBoardHistory(newHistory);
-            setBoardHistory(previousBoardHistory.slice()); 
+            // setBoardHistory(previousBoardHistory.slice()); 
+            setBoardHistory(previousBoardHistory); 
+
 
             //end updateHistory 
             setMyBoard(myUpdateBoard);
             calculateWinner();
             setXState(!xState);
+
+            alert(JSON.stringify(boardHistory));
+
             
 
         }
@@ -174,11 +184,11 @@ function Board() {
                 
                 <div className="col d-flex justify-content-center" style={{ fontSize: "1.5rem", color: (xState ? player1Color : player2Color) }}>
                     {/* {xState ? "X" : "O"}'s turn */}
-                    {xState && !winner && <span class="badge badge-pill badge-primary pt-2">X's turn</span>}
-                    {!xState && !winner && <span class="badge badge-pill badge-danger pt-2">O's turn</span>}
+                    {xState && !winner && <span className="badge badge-pill badge-primary pt-2">X's turn</span>}
+                    {!xState && !winner && <span className="badge badge-pill badge-danger pt-2">O's turn</span>}
 
-                    {!xState && winner && <span class="badge badge-pill badge-primary pt-2">X wins!</span>}
-                    {xState && winner && <span class="badge badge-pill badge-danger pt-2">O wins!</span>}
+                    {!xState && winner && <span className="badge badge-pill badge-primary pt-2">X wins!</span>}
+                    {xState && winner && <span className="badge badge-pill badge-danger pt-2">O wins!</span>}
 
                 </div>
 
