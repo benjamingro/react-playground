@@ -33,6 +33,12 @@ class MyFirstComponents extends React.Component {
                     <div className="col-lg-10">
                         <div className="row w-100">
                         <PlaygroundComponent
+                                componentname="Cart"
+                                componenttitle="React Shopping Cart"
+                                componenttext="This is a shopping cart implemented in React for the Week19 Shopping Cart exercise."
+                                componentwidth="12"
+                            />
+                        <PlaygroundComponent
                                 componentname="Board"
                                 componenttitle="Tic Tac Toe Game"
                                 componenttext="This is a tic tac toe game implemented in React."

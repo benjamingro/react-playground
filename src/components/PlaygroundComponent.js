@@ -20,6 +20,8 @@ import MyBasicForm from './MyBasicForm.js';
 
 import Board from './Board.js';
 
+import Cart from './Cart.jsx';
+
 
 
 class PlaygroundComponent extends React.Component {
@@ -73,6 +75,9 @@ class PlaygroundComponent extends React.Component {
                 break;
             case 'Board':
                 this.Component = <Board />;
+                break;
+            case 'Cart':
+                this.Component = <Cart />;
                 break;
 
             default:

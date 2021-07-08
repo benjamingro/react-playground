@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BlankFuntion(){
+function BlankFunction(){
     return(
         <>
         </>
