@@ -21,7 +21,7 @@ function Product({product,increment_Incart}){
                     {(Math.round(product.Price * 100) / 100).toFixed(2)} {product.Price_unit}
                 </div>
                 <div className="col-lg-2 align-self-center">
-                    {product.Instock} {product.Instock_unit}
+                    {product.Instock - product.Incart} {product.Instock_unit}
                 </div>
                 <div className="col-lg-1 px-0 align-self-center">
                     <Button variant="link" style={{fontSize:"1.8rem"}} onClick={()=>{increment_Incart(product)}} className={product.Incart >= product.Instock?'disabled':''}><FontAwesomeIcon icon={faCartPlus} /></Button>

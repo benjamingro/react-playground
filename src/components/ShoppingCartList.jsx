@@ -3,24 +3,36 @@ import ShoppingCartItem from "./ShoppingCartItem.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 
-
-function ShoppingCartList({ productList, decrement_Incart, cartTotal,checkout }) {
+function ShoppingCartList({
+  productList,
+  decrement_Incart,
+  cartTotal,
+  checkout,
+  itemsInCart,
+}) {
   return (
     <>
       <div className="card">
         <div className="card-header" style={{ fontWeight: "bold" }}>
           <div className="row w-100">
             <div className="col-lg-6 align-self-center">
-              Shopping cart&nbsp;&nbsp;
+              Cart&nbsp;&nbsp;
               <FontAwesomeIcon icon={faShoppingCart} className="mt-1" />
+              &nbsp;&nbsp;
+              <span className="badge badge-secondary" style={{fontSize:"medium"}}>{itemsInCart}</span>
             </div>
+            {/* <div className="col-lg-3 align-self-center">
+              
+            </div> */}
             <div className="col-lg-3 align-self-center">
               Total ${(Math.round(cartTotal * 100) / 100).toFixed(2)}
             </div>
             <div className="col-lg-3 align-self-center">
-              <Button variant="primary" onClick={()=>checkout()}>Checkout</Button>
-
+              <Button variant="primary" onClick={() => {if(itemsInCart>=1) {checkout()}}} className={itemsInCart<1?'disabled':''}>
+                Checkout
+              </Button>
             </div>
           </div>
         </div>
