@@ -6,7 +6,8 @@ import { faList} from '@fortawesome/free-solid-svg-icons';
 import Button from "react-bootstrap/Button";
 
 
-function ProductList({ productList,increment_Incart }) {
+function ProductList({ productList,increment_Incart,replenish }) {
+
   return (
     <>
       <div className="card">
@@ -16,7 +17,7 @@ function ProductList({ productList,increment_Incart }) {
               Product list&nbsp;&nbsp;<FontAwesomeIcon icon={faList} className="mt-1"/>
             </div>
             <div className="col-lg-6 align-self-center d-flex justify-content-end">
-              <Button variant="secondary">Replenish stock</Button>
+              <Button variant="secondary" onClick={()=>{replenish()}}>Replenish stock</Button>
             </div>
           </div>
           

@@ -72,6 +72,21 @@ function Cart() {
       });
   };
 
+  const replenish = () => {
+    alert("inside replenish");
+    const replenish_url = "https://mit-xpro-319116.uc.r.appspot.com/replenish";
+    axios
+      .get(replenish_url)
+      .then((response) => {
+
+        response.data.forEach((item) => (item["Incart"] = 0));
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  };
+
   return (
     <>
       <div className="row w-100">
@@ -80,6 +95,7 @@ function Cart() {
           <ProductList
             productList={productList}
             increment_Incart={increment_Incart}
+            replenish={replenish}
           />
         </div>
         <div className="col-lg-6">
