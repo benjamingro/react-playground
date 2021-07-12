@@ -2,19 +2,29 @@ import React from "react";
 import ShoppingCartItem from "./ShoppingCartItem.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import Button from "react-bootstrap/Button";
 
-function ShoppingCartList({ shoppingCart, decrementShoppingCart }) {
+
+function ShoppingCartList({ productList, decrement_Incart, cartTotal,checkout }) {
   return (
     <>
       <div className="card">
-        <div
-          className="card-header d-flex justify-content-center"
-          style={{ fontWeight: "bold" }}
-        >
-          Shopping cart&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faShoppingCart} className="mt-1" />
+        <div className="card-header" style={{ fontWeight: "bold" }}>
+          <div className="row w-100">
+            <div className="col-lg-6 align-self-center">
+              Shopping cart&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faShoppingCart} className="mt-1" />
+            </div>
+            <div className="col-lg-3 align-self-center">
+              Total ${(Math.round(cartTotal * 100) / 100).toFixed(2)}
+            </div>
+            <div className="col-lg-3 align-self-center">
+              <Button variant="primary" onClick={()=>checkout()}>Checkout</Button>
+
+            </div>
+          </div>
         </div>
-        {shoppingCart.length > 0 && (
+        {productList.filter((item) => item.Incart > 0).length > 0 && (
           <div className="card-body">
             <div className="row w-100"></div>
             <>
@@ -51,31 +61,33 @@ function ShoppingCartList({ shoppingCart, decrementShoppingCart }) {
                   overflowX: "hidden",
                 }}
               >
-                {shoppingCart.map((product, index) => {
-                  return (
-                    <>
-                      <ShoppingCartItem
-                        key={"cartItem_" + index}
-                        product={product}
-                        decrementShoppingCart={decrementShoppingCart}
-                      />
-                      {index !== shoppingCart.length - 1 ? (
-                        <div className="row w-100 pl-4 pr-0">
-                          <div className="col border"></div>
-                        </div>
-                      ) : (
-                        <></>
-                      )}
-                    </>
-                  );
-                })}
+                {productList
+                  .filter((item) => item.Incart > 0)
+                  .map((product, index) => {
+                    return (
+                      <>
+                        <ShoppingCartItem
+                          key={"cartItem_" + index}
+                          product={product}
+                          decrement_Incart={decrement_Incart}
+                        />
+                        {index !== productList.length - 1 ? (
+                          <div className="row w-100 pl-4 pr-0">
+                            <div className="col border"></div>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+                      </>
+                    );
+                  })}
               </div>
             </>
 
             {/* {JSON.stringify(productList)} */}
           </div>
         )}
-        {shoppingCart.length === 0 && (
+        {productList.filter((item) => item.Incart > 0).length === 0 && (
           <div className="card-body text-secondary">
             There are currently no items in your cart
           </div>

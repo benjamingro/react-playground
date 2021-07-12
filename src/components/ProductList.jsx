@@ -3,11 +3,24 @@ import Product from "./Product.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList} from '@fortawesome/free-solid-svg-icons';
 
-function ProductList({ productList,addToShoppingCart }) {
+import Button from "react-bootstrap/Button";
+
+
+function ProductList({ productList,increment_Incart }) {
   return (
     <>
       <div className="card">
-        <div className="card-header d-flex justify-content-center" style={{fontWeight:"bold"}}>Product list&nbsp;&nbsp;<FontAwesomeIcon icon={faList} className="mt-1"/></div>
+        <div className="card-header" style={{fontWeight:"bold"}}>
+          <div className="row w-100">
+            <div className="col-lg-6 align-self-center">
+              Product list&nbsp;&nbsp;<FontAwesomeIcon icon={faList} className="mt-1"/>
+            </div>
+            <div className="col-lg-6 align-self-center d-flex justify-content-end">
+              <Button variant="secondary">Replenish stock</Button>
+            </div>
+          </div>
+          
+          </div>
         <div className="card-body">
           <div className="row w-100"></div>
           <>
@@ -41,7 +54,7 @@ function ProductList({ productList,addToShoppingCart }) {
               {productList.map((product, index) => {
                 return (
                   <>
-                    <Product key={"product_"+index} product={product} addToShoppingCart={addToShoppingCart}/>
+                    <Product key={"product_"+index} product={product} increment_Incart={increment_Incart}/>
                     {index !== productList.length - 1 ? (
                       <div className="row w-100 pl-4 pr-0">
                         <div className="col border"></div>

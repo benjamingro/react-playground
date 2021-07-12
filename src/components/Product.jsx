@@ -4,7 +4,7 @@ import { faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 
 
-function Product({product,addToShoppingCart}){
+function Product({product,increment_Incart}){
     return(
         <>
             <div className="row w-100 my-2">
@@ -24,7 +24,7 @@ function Product({product,addToShoppingCart}){
                     {product.Instock} {product.Instock_unit}
                 </div>
                 <div className="col-lg-1 px-0 align-self-center">
-                    <Button variant="link" style={{fontSize:"1.8rem"}} onClick={()=>{addToShoppingCart(product)}}><FontAwesomeIcon icon={faCartPlus} /></Button>
+                    <Button variant="link" style={{fontSize:"1.8rem"}} onClick={()=>{increment_Incart(product)}} className={product.Incart >= product.Instock?'disabled':''}><FontAwesomeIcon icon={faCartPlus} /></Button>
                     {/* className="" style={{color:player1Color}} */}
                 </div>
             </div>

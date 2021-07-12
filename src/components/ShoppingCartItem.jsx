@@ -4,7 +4,7 @@ import { faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 
 
-function ShoppingCartItem({product,decrementShoppingCart}){
+function ShoppingCartItem({product,decrement_Incart}){
     return(
         <>
             <div className="row w-100 my-2">
@@ -24,7 +24,7 @@ function ShoppingCartItem({product,decrementShoppingCart}){
                     ${(Math.round((product.Price*product.Incart) * 100) / 100).toFixed(2)}
                 </div>
                 <div className="col-lg-1 px-0 align-self-center">
-                    <Button variant="link" style={{fontSize:"1.8rem"}} onClick={()=>{decrementShoppingCart(product)}}><FontAwesomeIcon icon={faCartArrowDown} /></Button>
+                    <Button variant="link" style={{fontSize:"1.8rem"}} onClick={()=>{decrement_Incart(product)}}><FontAwesomeIcon icon={faCartArrowDown} /></Button>
                     {/* className="" style={{color:player1Color}} */}
                 </div>
             </div>

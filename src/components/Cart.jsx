@@ -1,103 +1,100 @@
-import React from 'react';
-import ProductList from './ProductList.jsx'
-import ShoppingCartList from './ShoppingCartList.jsx'
+import React from "react";
+import ProductList from "./ProductList.jsx";
+import ShoppingCartList from "./ShoppingCartList.jsx";
+import Button from "react-bootstrap/Button";
 
-const axios = require('axios').default;
+const axios = require("axios").default;
 
+function Cart() {
+  const [productList, setProductList] = React.useState([]);
+  const [shoppingCart, setShoppingCart] = React.useState([]);
+  const [cartTotal, setCartTotal] = React.useState(0);
 
-function Cart(){
-    const [productList,setProductList] = React.useState([]); 
-    const [shoppingCart,setShoppingCart] = React.useState([]);
+  const increment_Incart = (product) => {
+    let updated_productList = productList.slice();
+    updated_productList.forEach((item) => {
+      if (item.ProductName === product.ProductName) {
+        item.Incart = item.Incart + 1;
+      }
+    });
+    setProductList(updated_productList);
+  };
 
-    const addToShoppingCart = (product) =>{
-        let item_alreadyThere = shoppingCart.find(item=>
-            item.ProductName===product.ProductName
-        );
+  const decrement_Incart = (product) => {
+    let updated_productList = productList.slice();
+    updated_productList.forEach((item) => {
+      if (item.ProductName === product.ProductName) {
+        item.Incart = item.Incart - 1;
+      }
+    });
+    setProductList(updated_productList);
+  };
 
-        if(item_alreadyThere)
-        {
-            let updated_shoppingCart = shoppingCart.slice(); 
-            updated_shoppingCart.forEach(item=>{
-                if(item.ProductName===item_alreadyThere.ProductName)
-                {
-                    item.Incart = item.Incart + 1; 
-                    // break; 
-                }
-            }); 
-            setShoppingCart(updated_shoppingCart); 
-        }
-        else
-        {
-            product['Incart'] = 1; 
-            setShoppingCart([product,...shoppingCart]); 
-        }
+  React.useEffect(() => {
+    let accumulator = 0;
+    const filtered_productList = productList.filter((item) => item.Incart > 0);
+    filtered_productList.forEach((item) => {
+      accumulator += item.Incart * item.Price;
+    });
+    setCartTotal(accumulator);
+  });
 
-    };
+  React.useEffect(() => {
+    function getProductList() {
+      const getProductList_url =
+        "https://mit-xpro-319116.uc.r.appspot.com/allproducts";
 
-    const decrementShoppingCart = (product) =>{
-        let foundItem = shoppingCart.find(item=>item.ProductName===product.ProductName);
-        let foundIndex = shoppingCart.findIndex(item=>item.ProductName===product.ProductName);
+      axios
+        .get(getProductList_url)
+        .then((response) => {
+          response.data.forEach((item) => (item["Incart"] = 0));
+          setProductList(response.data);
+        })
+        .catch((error) => {
+          alert(JSON.stringify(error));
+        });
+    }
+    getProductList();
+  }, []);
 
-        let updated_shoppingCart = shoppingCart.slice();
-        if(foundItem.Incart>1)
-        { 
-            updated_shoppingCart.forEach(item=>{
-                if(item.ProductName===product.ProductName)
-                {
-                    item.Incart = item.Incart - 1; 
-                }
-            });
+  const checkout = () => {
+    const filtered_productList = productList.filter((item) => item.Incart > 0);
+    const checkout_url = "https://mit-xpro-319116.uc.r.appspot.com/checkout";
+    axios
+      .post(checkout_url, filtered_productList)
+      .then((response) => {
 
-            setShoppingCart(updated_shoppingCart); 
-        }
-        else
-        {
-            
-            updated_shoppingCart.splice(foundIndex,1); 
-            // alert(JSON.stringify(updated_shoppingCart)); 
-            setShoppingCart(updated_shoppingCart);
-        }
-    };
+        response.data.forEach((item) => (item["Incart"] = 0));
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  };
 
-    React.useEffect(()=>{
-        function getProductList(){
-            const getProductList_url = "https://mit-xpro-319116.uc.r.appspot.com/allproducts";
-            // const getProductList_url = "https://mit-xpro-319116.uc.r.appspot.com";
-
-            axios.get(getProductList_url).then(response => {
-                setProductList(response.data);
-                // alert(`received data ${response}`); 
-                
-            }).catch(error => {
-                
-                alert(JSON.stringify(error));
-            });
-        }
-        getProductList(); 
-    },[]);
-
-    return(
-        <>
-            <div className="row w-100">
-
-                <div className="col">
-                    Checkout row
-                </div>
-            </div>
-            <div className="row w-100">
-                <div className="col-lg-6">
-                    {/* Product List */}
-                    <ProductList productList={productList} addToShoppingCart={addToShoppingCart}/>
-                </div>
-                <div className="col-lg-6">
-                    {/* Shopping Cart */}
-                    <ShoppingCartList shoppingCart={shoppingCart} decrementShoppingCart={decrementShoppingCart}/>
-                </div>
-                <div className="col-lg-4">
-                </div>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className="row w-100">
+        <div className="col-lg-6">
+          {/* Product List */}
+          <ProductList
+            productList={productList}
+            increment_Incart={increment_Incart}
+          />
+        </div>
+        <div className="col-lg-6">
+          {/* Shopping Cart */}
+          <ShoppingCartList
+            productList={productList}
+            decrement_Incart={decrement_Incart}
+            cartTotal={cartTotal}
+            checkout={checkout}
+          />
+        </div>
+        <div className="col-lg-4"></div>
+      </div>
+    </>
+  );
 }
 
-export default Cart
+export default Cart;
