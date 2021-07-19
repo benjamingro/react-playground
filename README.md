@@ -21,10 +21,11 @@ The component issues the following API calls:
 
 ### Back-end 
 #### API 
-The API is hosted on App Engine and is available as a GitHub Repo at [https://github.com/benjamingro/mit-xpro-shopping-cart-backend/](https://github.com/benjamingro/mit-xpro-shopping-cart-backend/)
+The API is hosted on App Engine and is available as a GitHub Repo at [https://github.com/benjamingro/mit-xpro-shopping-cart-backend/](https://github.com/benjamingro/mit-xpro-shopping-cart-backend/). 
 
 #### Database
 The Database is hosted on Cloud SQL. The data files used to build the Cloud SQL mySQL database are available at [https://github.com/benjamingro/mit-xpro-shopping-cart-backend/tree/main/Inventory/](https://github.com/benjamingro/mit-xpro-shopping-cart-backend/tree/main/Inventory/)
+ 
 
 ## ATM Machine - Week 15
 The AtmMachine.js component was created for the Week 15 ATM machine exercise. 

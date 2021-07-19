@@ -66,14 +66,18 @@ function Cart() {
   React.useEffect(() => {
     function getProductList() {
       setBusy(true);
-      const getProductList_url =
-        "https://mit-xpro-319116.uc.r.appspot.com/allproducts";
+      // const getProductList_url = "https://mit-xpro-319116.uc.r.appspot.com/allproducts";
+      // graphql implementation: 
+      const getProductList_url = "https://mit-xpro-319116.uc.r.appspot.com/graphql?query={ProductList{ProductName,Price,Price_unit,Instock,Instock_unit,Country,ImageUrl}}";
 
       axios
         .get(getProductList_url)
         .then((response) => {
-          response.data.forEach((item) => (item["Incart"] = 0));
-          setProductList(response.data);
+          // response.data.forEach((item) => (item["Incart"] = 0));
+          // setProductList(response.data);
+          // graphql implementation: 
+          response.data.data.ProductList.forEach((item) => (item["Incart"] = 0));
+          setProductList(response.data.data.ProductList);
           setBusy(false);
         })
         .catch((error) => {
