@@ -35,7 +35,7 @@ class MyFirstComponents extends React.Component {
                         <PlaygroundComponent
                                 componentname="Cart"
                                 componenttitle="React Shopping Cart"
-                                componenttext="This is a shopping cart implemented in React for the Week19 Shopping Cart exercise. It uses a Google Cloud Platform project on the back end with App Engine, Cloud SQL and Cloud Storage to create the API, store the data, and serve the product images respectively."
+                                componenttext="This is a shopping cart implemented in React for the Week19 Shopping Cart exercise. It uses a Google Cloud Platform project on the back end with App Engine, Cloud SQL and Cloud Storage to create the API, store the data, and serve the product images respectively. GraphQL was added to the API as part of the Week 20 exercise."
                                 componentwidth="12"
                             />
                         <PlaygroundComponent
