@@ -15,9 +15,15 @@ It uses the following component hierarchy.
 ![Cart.jsx](README_images/Week19_componentHierarchy.png?raw=true "Cart.jsx")
 
 The component issues the following API calls: 
-* GET @ https://mit-xpro-319116.uc.r.appspot.com/allproduct
+* GET @ https://mit-xpro-319116.uc.r.appspot.com/allproduct 
 * GET @ https://mit-xpro-319116.uc.r.appspot.com/replenish
 * POST @ https://mit-xpro-319116.uc.r.appspot.com/checkout
+
+### Update 7-19-21 Week 20 GraphQL Exercise
+* GET @ https://mit-xpro-319116.uc.r.appspot.com/allproduct 
+#### has been replaced by
+* POST @ https://mit-xpro-319116.uc.r.appspot.com/graphql?query={ProductList{ProductName,Price,Price_unit,Instock,Instock_unit,Country,ImageUrl}}
+
 
 ### Back-end 
 #### API 
